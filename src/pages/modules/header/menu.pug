@@ -1,6 +1,14 @@
-- var menu = [{name: 'О нас'}, {name: 'Услуги'}, {name: 'Вакансии'}, {name: 'Новости'}, {name: 'Соглашения'}]
-
+- var menu = [{name: 'О нас', href: '#'}, {name: 'Услуги', href: '#', dropdown: [{name: 'Item-1', href: '#'}, {name: 'Item-2', href: '#'}]}, {name: 'Вакансии', href: '#' }, {name: 'Новости', href: '#' }, {name: 'Соглашения', href: '#', dropdown: [{name: 'Item-1', href: '#'}, {name: 'Item-2', href: '#'}]}]
+- var i = 0
 ul.nav
-    each item in menu
-        li.nav-item
-            a.nav-link(href="#")=item.name
+    each item, index in menu
+        li.nav-item.d-flex
+            if (item.dropdown)
+                a.nav-link.dropdown-toggle.pr-0(href=item.href id='menu-link-item-'+index role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')=item.name
+                .dropdown-menu
+                    each dropdownItem, index in item.dropdown
+                        a.dropdown-item(href=dropdownItem.href id='dropdown-menu-link-item-'+index)=dropdownItem.name
+
+            else
+                a.nav-link(href=item.href id='menu-link-item-'+index)=item.name
+

@@ -2,6 +2,19 @@
 
 .nav {
   .nav-link {
-    @extend p
+    @extend p;
+    &.dropdown-toggle::after {
+      content: '';
+      border: none;
+    }
+  }
+  .dropdown-menu {
+    @extend %window;
+    a {
+      @extend p;
+      &:hover, &:focus {
+      background-color: transparent;
+      }
+    }
   }
 }
