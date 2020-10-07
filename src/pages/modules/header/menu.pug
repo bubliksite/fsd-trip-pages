@@ -1,0 +1,6 @@
+- var menu = [{name: 'О нас'}, {name: 'Услуги'}, {name: 'Вакансии'}, {name: 'Новости'}, {name: 'Соглашения'}]
+
+ul.nav
+    each item in menu
+        li.nav-item
+            a.nav-link(href="#")=item.name
